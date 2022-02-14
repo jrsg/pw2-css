@@ -234,37 +234,37 @@ class csstidy_optimise
         switch(count($values))
         {
             case 4:
-            if($values[0] == $values[1] && $values[0] == $values[2] && $values[0] == $values[3])
-            {
-                return $values[0].$important;
-            }
-            elseif($values[1] == $values[3] && $values[0] == $values[2])
-            {
-                return $values[0].' '.$values[1].$important;
-            }
-            elseif($values[1] == $values[3])
-            {
-                return $values[0].' '.$values[1].' '.$values[2].$important;
-            }
-            break;
+                if($values[0] == $values[1] && $values[0] == $values[2] && $values[0] == $values[3])
+                {
+                    return $values[0].$important;
+                }
+                elseif($values[1] == $values[3] && $values[0] == $values[2])
+                {
+                    return $values[0].' '.$values[1].$important;
+                }
+                elseif($values[1] == $values[3])
+                {
+                    return $values[0].' '.$values[1].' '.$values[2].$important;
+                }
+                break;
 
             case 3:
-            if($values[0] == $values[1] && $values[0] == $values[2])
-            {
-                return $values[0].$important;
-            }
-            elseif($values[0] == $values[2])
-            {
-                return $values[0].' '.$values[1].$important;
-            }
-            break;
+                if($values[0] == $values[1] && $values[0] == $values[2])
+                {
+                    return $values[0].$important;
+                }
+                elseif($values[0] == $values[2])
+                {
+                    return $values[0].' '.$values[1].$important;
+                }
+                break;
 
             case 2:
-            if($values[0] == $values[1])
-            {
-                return $values[0].$important;
-            }
-            break;
+                if($values[0] == $values[1])
+                {
+                    return $values[0].$important;
+                }
+                break;
         }
 
         return $value;
@@ -562,29 +562,29 @@ class csstidy_optimise
             switch($status)
             {
                 case 'st':
-                if($string{$i} == $sep && !csstidy::escaped($string,$i))
-                {
-                    ++$num;
-                }
-                elseif($string{$i} == '"' || $string{$i} == '\'' || $string{$i} == '(' && !csstidy::escaped($string,$i))
-                {
-                    $status = 'str';
-                    $to = ($string{$i} == '(') ? ')' : $string{$i};
-                    (isset($output[$num])) ? $output[$num] .= $string{$i} : $output[$num] = $string{$i};
-                }
-                else
-                {
-                    (isset($output[$num])) ? $output[$num] .= $string{$i} : $output[$num] = $string{$i};
-                }
-                break;
+                    if($string{$i} == $sep && !csstidy::escaped($string,$i))
+                    {
+                        ++$num;
+                    }
+                    elseif($string{$i} == '"' || $string{$i} == '\'' || $string{$i} == '(' && !csstidy::escaped($string,$i))
+                    {
+                        $status = 'str';
+                        $to = ($string{$i} == '(') ? ')' : $string{$i};
+                        (isset($output[$num])) ? $output[$num] .= $string{$i} : $output[$num] = $string{$i};
+                    }
+                    else
+                    {
+                        (isset($output[$num])) ? $output[$num] .= $string{$i} : $output[$num] = $string{$i};
+                    }
+                    break;
 
                 case 'str':
-                if($string{$i} == $to && !csstidy::escaped($string,$i))
-                {
-                    $status = 'st';
-                }
-                (isset($output[$num])) ? $output[$num] .= $string{$i} : $output[$num] = $string{$i};
-                break;
+                    if($string{$i} == $to && !csstidy::escaped($string,$i))
+                    {
+                        $status = 'st';
+                    }
+                    (isset($output[$num])) ? $output[$num] .= $string{$i} : $output[$num] = $string{$i};
+                    break;
             }
         }
 
@@ -612,8 +612,8 @@ class csstidy_optimise
 
         foreach($shorthands as $key => $value)
         {
-            if(isset($array[$value[0]]) && isset($array[$value[1]])
-            && isset($array[$value[2]]) && isset($array[$value[3]]) && $value !== 0)
+            if(isset($value[0]) && isset($value[1]) && isset($value[2]) && isset($value[3]) && isset($array[$value[0]]) && isset($array[$value[1]])
+                && isset($array[$value[2]]) && isset($array[$value[3]]) && $value !== 0)
             {
                 $return[$key] = '';
 
@@ -757,7 +757,7 @@ class csstidy_optimise
                 // Skip some properties if there is no background image
                 if((!isset($bg_img_array[$i]) || $bg_img_array[$i] === 'none')
                     && ($bg_property === 'background-size' || $bg_property === 'background-position'
-                    || $bg_property === 'background-attachment' || $bg_property === 'background-repeat'))
+                        || $bg_property === 'background-attachment' || $bg_property === 'background-repeat'))
                 {
                     continue;
                 }
