@@ -1,0 +1,20 @@
+name: GitHub Classroom Workflow
+
+on: [push]
+
+jobs:
+  build:
+    name: Autograding
+    runs-on: ubuntu-latest
+    steps:
+        - name: Install PHP
+          uses: shivammathur/setup-php@v2
+          with:
+            php-version: '7.3'
+            tools: phpunit
+
+        - name: Actions 
+          uses: actions/checkout@v2
+
+        - name: Education
+          uses: education/autograding@v1
